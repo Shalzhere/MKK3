@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Information - Marshal Adrariana</title>
+  <style>
+    /* 1. RESET & BASE STYLE (Menerapkan Selector Universal dan Format Warna Monokrom) */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif; /* Penerapan Font Family untuk keterbacaan */
+      background-color: #f0f0f0; /* Warna latar badan (Abu-abu Terang) */
+      color: #333333; /* Warna teks utama (Abu-abu Gelap) */
+      line-height: 1.6; /* Penerapan Line Height untuk keterbacaan */
+      max-width: 800px; /* Membatasi lebar konten agar lebih nyaman dibaca */
+      /* Box Model: Margin atas 30px, Kiri/Kanan Auto (Tengah), Bawah 0 */
+      margin: 30px auto 0 auto; 
+      padding: 0 15px; /* Jarak kiri-kanan */
+    }
+
+    /* 2. CONTAINER CARDS (Group Selector) */
+    header, section {
+      background: #ffffff; /* Warna latar card (Putih) */
+      padding: 25px; /* Penerapan Padding untuk ruang dalam */
+      border-radius: 10px; /* Sudut melengkung card */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Bayangan halus di bawah card */
+      margin-bottom: 20px; /* Penerapan Margin untuk jarak antar elemen */
+    }
+
+    h2 {
+      color: #111111; /* Warna teks judul (Hitam) */
+      border-bottom: 2px solid #222222; /* Warna border judul (Hitam Abu-abu) */
+      padding-bottom: 5px; /* Jarak dalam bawah */
+      margin-bottom: 15px; /* Jarak bawah ke konten */
+      font-size: 1.3rem; /* Ukuran huruf judul */
+    }
+
+    /* 3. HEADER (Penerapan CSS Grid, Position Relative & Absolute) */
+    header {
+      display: grid; /* Layout Grid untuk header */
+      grid-template-columns: 130px 1fr; /* Layout: foto 130px + sisa text */
+      gap: 20px; /* Jarak antara foto dan teks */
+      align-items: center; /* Sejajar vertikal */
+      position: relative; /* Acuan posisi elemen absolute */
+    }
+
+    header img {
+      border: 3px solid #555555; /* Warna border foto (Abu-abu) */
+      border-radius: 50%; /* Buat lingkaran sempurna */
+    }
+
+    /* Badge "Open to Work" menggunakan Position Absolute */
+    .badge-status {
+      position: absolute; /* Posisi tetap relatif terhadap parent */
+      top: 15px; /* Jarak dari atas */
+      right: 15px; /* Jarak dari kanan */
+      background-color: #333333; /* Warna latar badge (Abu-abu Gelap) */
+      color: white; /* Warna teks (Putih) */
+      padding: 4px 10px; /* Jarak dalam badge */
+      font-size: 0.75rem; /* Ukuran teks kecil */
+      border-radius: 20px; /* Sudut sangat bulat (Pill) */
+      font-weight: bold; /* Teks tebal */
+    }
+
+    /* Link dan Pseudo-class :hover */
+    a {
+      color: #333333; /* Warna tautan (Abu-abu Gelap) */
+      text-decoration: none; /* Hilangkan garis bawah */
+      font-weight: 600; /* Teks tebal */
+    }
+    
+    a:hover {
+      text-decoration: underline; /* Tambah garis bawah saat hover */
+    }
+
+    /* 4. KEAHLIAN & DISPLAY PROPERTIES */
+    .skills-grid {
+      display: grid; /* Layout Grid */
+      grid-template-columns: 1fr 1fr 1fr; /* 3 kolom sama besar */
+      gap: 15px; /* Jarak antar kolom */
+      list-style: none; /* Hilangkan tanda titik */
+    }
+
+    .skill-card {
+      background: #f0f0f0; /* Warna latar skill card (Abu-abu Terang) */
+      padding: 15px; /* Jarak dalam card */
+      border-radius: 8px; /* Sudut melengkung */
+      border-left: 4px solid #333333; /* Garis tebal di kiri (Abu-abu Gelap) */
+    }
+
+    .skill-card h3 {
+      font-size: 1rem; /* Ukuran huruf */
+      color: #111111; /* Warna teks (Hitam) */
+      margin-bottom: 5px; /* Jarak bawah ke deskripsi */
+    }
+
+    /* Class untuk belajar Display & Visibility */
+    .aksesibilitas-tersembunyi {
+      display: none; 
+    }
+
+    .elemen-cadangan {
+      visibility: hidden; 
+    }
+
+    label {
+      display: inline-block; /* Agar bisa diberi margin/padding */
+      margin-bottom: 5px; /* Jarak bawah */
+      font-weight: 600; /* Teks tebal */
+    }
+
+    /* 5. LISTS & TABLES */
+    ol { padding-left: 20px; /* Indent daftar */ }
+    li { margin-bottom: 8px; /* Jarak antar item */ }
+
+    table {
+      width: 100%; /* Lebar penuh */
+      border-collapse: collapse; /* Gabungkan border */
+      margin-top: 10px; /* Jarak atas */
+    }
+    
+    th, td {
+      padding: 10px; /* Jarak dalam sel */
+      text-align: left; /* Rata kiri */
+      border-bottom: 1px solid #e0e0e0; /* Garis bawah sel (Abu-abu) */
+    }
+    
+    th {
+      background-color: #f0f0f0; /* Warna latar header tabel (Abu-abu Terang) */
+      color: #555555; /* Warna teks header (Abu-abu Sedang) */
+    }
+
+    /* 6. FORMULIR DENGAN CSS GRID */
+    form {
+      display: grid; /* Layout Grid */
+      gap: 15px; /* Jarak antar elemen */
+    }
+
+    .form-row {
+      display: grid; /* Layout Grid */
+      grid-template-columns: 1fr 1fr; /* 2 kolom sama besar */
+      gap: 15px; /* Jarak antar kolom */
+    }
+
+    input[type="text"], input[type="email"], textarea {
+      width: 100%; /* Isi lebar penuh */
+      padding: 10px; /* Jarak dalam */
+      border: 1px solid #cccccc; /* Garis tepi (Abu-abu) */
+      border-radius: 5px; /* Sudut melengkung */
+      font-family: inherit; /* Warisi font dari parent */
+    }
+
+    /* Pseudo-class :focus untuk Form */
+    input:focus, textarea:focus {
+      outline: none; /* Hilangkan outline bawaan */
+      border-color: #333333; /* Warna border saat fokus (Abu-abu Gelap) */
+      border: 2px solid #333333; /* Border lebih tebal saat fokus */
+    }
+
+    /* Pseudo-class :hover untuk Button */
+    button {
+      background-color: #333333; /* Warna latar tombol (Abu-abu Gelap) */
+      color: white; /* Warna teks (Putih) */
+      padding: 10px 20px; /* Jarak dalam tombol */
+      border: none; /* Tanpa border */
+      border-radius: 5px; /* Sudut melengkung */
+      font-weight: bold; /* Teks tebal */
+      cursor: pointer; /* Kursor tangan saat hover */
+      transition: background 0.3s; /* Transisi warna halus */
+      justify-self: start; /* Sejajar kiri */
+      display: inline-block; /* Ukuran sesuai konten */
+    }
+
+    button:hover {
+      background-color: #555555; /* Warna tombol berubah lebih terang saat hover */
+    }
+
+    /* 7. FOOTER (Penerapan Position Sticky & Z-Index) */
+    footer {
+      position: sticky; /* Tetap di posisi saat scroll */
+      bottom: 0; /* Menempel di bawah layar */
+      z-index: 100; /* Prioritas tinggi agar tidak tertimpa */
+      background-color: #222222; /* Penerapan Background Color untuk Footer */
+      color: #ffffff; /* Warna teks (Putih) */
+      text-align: center; /* Penerapan Text Align untuk keterbacaan */
+      font-size: 0.9rem; /* Ukuran teks */
+      padding: 15px; /* Jarak dalam */
+      margin-top: 20px; /* Jarak dari atas */
+      border-radius: 8px 8px 0 0; /* Sudut melengkung atas saja */
+    }
+
+    /* 8. MEDIA QUERY (Responsive untuk Tampilan HP) */
+    @media (max-width: 600px) {
+     
+      header {
+        grid-template-columns: 1fr; /* 1 kolom penuh */
+        justify-items: center; /* Posisi tengah */
+        text-align: center; /* Teks rata tengah */
+      }
+      .skills-grid {
+        grid-template-columns: 1fr; /* 1 kolom penuh */
+      }
+      .form-row {
+        grid-template-columns: 1fr; /* 1 kolom penuh */
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- HEADER -->
+  <header>
+    <span class="badge-status">Open to Work</span>
+    <img src="Me1.jpeg" alt="Foto Marshal Adrariana" width="120" height="120">
+    <div>
+      <h1>Marshal Adrariana</h1>
+      <h3>Web Developer & UI/UX Enthusiast</h3>
+      <p>Email: <a href="mailto:martialmar4@gmail.com">marshal@example.com</a> | HP: 0895-1563-9806 | Lokasi: Bandung</p>
+      <p>LinkedIn: <a href="#" target="_blank">linkedin.com/in/marshaladrariana</a> | GitHub: <a href="#" target="_blank">github.com/marshaladrariana</a></p>
+    </div>
+  </header>
+
+  <!-- KONTEN UTAMA -->
+  <main>
+    <!-- Bukti penerapan Display & Visibility -->
+    <p class="aksesibilitas-tersembunyi">Teks ini hilang sepenuhnya dari alur dokumen (display: none).</p>
+    <div class="elemen-cadangan">Area ini tetap memakan ruang tetapi teksnya tersembunyi (visibility: hidden).</div>
+
+    <!-- SECTION: TENTANG SAYA -->
+    <section id="tentang">
+      <h2>Tentang Saya</h2>
+      <p>Saya adalah seorang <strong>Junior Web Developer</strong> yang ingin berfokus pada Full Stack Web Development. Untuk sekarang saya sedang mempelajari Framework dan cara kerja Domain.</p>
+    </section>
+
+    <!-- SECTION: KEAHLIAN -->
+    <section id="keahlian">
+      <h2>Keahlian (Skills)</h2>
+      <ul class="skills-grid">
+        <li class="skill-card">
+          <h3>Pemrograman Web</h3>
+          <p>HTML5, CSS3, JavaScript (ES6), Python</p>
+        </li>
+        <li class="skill-card">
+          <h3>Framework & Tools</h3>
+          <p>Git, GitHub, VS Code</p>
+        </li>
+        <li class="skill-card">
+          <h3>Soft Skills</h3>
+          <p>Komunikasi, Kerja Sama Tim, Problem Solving</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- SECTION: PENDIDIKAN -->
+    <section id="pendidikan">
+      <h2>Riwayat Pendidikan</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tahun</th>
+            <th>Tingkat / Gelar</th>
+            <th>Instansi / Sekolah</th>
+            <th>IPK / Nilai</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2025 - 2027</td>
+            <td>SMK Jurusan RPL</td>
+            <td>SMK Telkom Bandung</td>
+            <td>100 /100</td>
+          </tr>
+          <tr>
+            <td>2017 - 2020</td>
+            <td>SMA Jurusan IPA</td>
+            <td>SMA Negeri 1 Jakarta</td>
+            <td>88.5 / 100</td> 
+          </tr>
+          <tr>
+            <td>2014 - 2017</td>
+            <td>SMP</td>
+            <td>SMP Negeri 5 Jakarta</td>
+            <td>90 / 100</td>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION: PENGALAMAN -->
+    <section id="pengalaman">
+      <h2>Pengalaman Kerja & Organisasi</h2>
+      <ol>
+        <li>
+          <strong>Frontend Developer Intern</strong> - PT Teknologi Nusantara (2023)
+          <p>Membantu mengembangkan antarmuka pengguna web menggunakan HTML, CSS, dan JavaScript.</p>
+        </li>
+        <li>
+          <strong>Anggota Divisi IT</strong> - Himpunan Mahasiswa Informatika (2021 - 2022)
+          <p>Mengelola situs web resmi acara kampus dan mengoordinasikan workshop pemrograman.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- TEMPAT TUGAS TAMBAHAN DI SINI -->
+    <!-- Tambahkan <section> Portofolio atau Hobi & Minat kamu di bawah baris ini! -->
+
+
+    <!-- SECTION: KONTAK -->
+    <section id="kontak">
+      <h2>Hubungi Saya</h2>
+      <form action="#" method="POST">
+        <div class="form-row">
+          <div>
+            <label for="nama">Nama Lengkap:</label>
+            <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" required>
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="contoh@email.com" required>
+          </div>
+        </div>
+        <div>
+          <label for="pesan">Pesan Anda:</label>
+          <textarea id="pesan" name="pesan" rows="4" placeholder="Tuliskan pesan pekerjaan atau penawaran di sini..." required></textarea>
+        </div>
+        <button type="submit">Kirim Pesan</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Marshal Adrariana. Dibuat menggunakan HTML5 & CSS3.</p>
+  </footer>
+
+</body>
+</html>
