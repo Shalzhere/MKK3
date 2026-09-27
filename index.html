@@ -54,6 +54,33 @@
       border-radius: 50%; /* Buat lingkaran sempurna */
     }
 
+    /* NAVBAR: wadah tombol-tombol di atas bagian profil */
+    .navbar {
+      display: flex; /* Tombol berjajar ke samping */
+      justify-content: flex-end; /* Rata ke kanan */
+      align-items: center; /* Sejajar vertikal */
+      gap: 10px; /* Jarak antar tombol */
+      margin-bottom: 20px; /* Jarak ke header di bawahnya */
+    }
+
+    /* Tombol di dalam navbar (misal Toggle Dark Mode) */
+    .nav-btn {
+      background-color: #333333; /* Warna latar tombol (Abu-abu Gelap) */
+      color: white; /* Warna teks (Putih) */
+      padding: 8px 16px; /* Jarak dalam tombol */
+      font-size: 0.85rem; /* Ukuran teks */
+      border: 1px solid #555555; /* Garis tepi tipis */
+      border-radius: 20px; /* Sudut bulat (Pill) */
+      font-weight: bold; /* Teks tebal */
+      cursor: pointer; /* Kursor berubah jadi tangan */
+      transition: background 0.3s, color 0.3s; /* Warna berubah halus */
+    }
+
+    /* Efek saat kursor diarahkan ke tombol */
+    .nav-btn:hover {
+      background-color: #555555; /* Lebih terang saat hover */
+    }
+
     /* Badge "Open to Work" menggunakan Position Absolute */
     .badge-status {
       position: absolute; /* Posisi tetap relatif terhadap parent */
@@ -209,10 +236,85 @@
         grid-template-columns: 1fr; /* 1 kolom penuh */
       }
     }
+
+    /* 9. DARK MODE (Style khusus ketika body punya class 'dark-theme') */
+
+    /* Latar halaman jadi gelap */
+    body.dark-theme {
+      background-color: #1a1a1a; /* Abu-abu sangat gelap */
+      color: #e0e0e0; /* Teks jadi abu-abu terang */
+    }
+
+    /* Card (header & section) jadi abu-abu gelap, bukan putih */
+    body.dark-theme header,
+    body.dark-theme section {
+      background-color: #2a2a2a;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Bayangan lebih gelap */
+    }
+
+    /* Warna teks di dalam card tetap terang */
+    body.dark-theme h1,
+    body.dark-theme h2,
+    body.dark-theme h3,
+    body.dark-theme .skill-card h3 {
+      color: #f0f0f0; /* Abu-abu sangat terang */
+    }
+
+    /* Garis bawah judul jadi lebih terang agar terlihat */
+    body.dark-theme h2 {
+      border-bottom-color: #555555;
+    }
+
+    /* Tautan (link) */
+    body.dark-theme a {
+      color: #cccccc; /* Abu-abu terang */
+    }
+
+    /* Kartu keahlian */
+    body.dark-theme .skill-card {
+      background-color: #333333;
+      border-left-color: #cccccc;
+    }
+
+    /* Tabel: garis dan header ikut menyesuaikan */
+    body.dark-theme th,
+    body.dark-theme td {
+      border-bottom-color: #444444;
+    }
+
+    body.dark-theme th {
+      background-color: #333333;
+      color: #e0e0e0;
+    }
+
+    /* Isian form */
+    body.dark-theme input[type="text"],
+    body.dark-theme input[type="email"],
+    body.dark-theme textarea {
+      background-color: #2a2a2a;
+      color: #e0e0e0;
+      border-color: #555555;
+    }
+
+    /* Tombol navbar di mode gelap dibalik biar tetap kelihatan */
+    body.dark-theme .nav-btn {
+      background-color: #e0e0e0; /* Latar terang */
+      color: #333333; /* Teks gelap */
+    }
+
+    body.dark-theme .nav-btn:hover {
+      background-color: #ffffff; /* Makin terang saat hover */
+    }
+
   </style>
 </head>
 <body>
   
+  <!-- NAVBAR: deretan tombol di atas bagian profil -->
+  <nav class="navbar">
+    <button class="nav-btn" id="toggleMode">Dark Mode</button>
+  </nav>
+
   <!-- HEADER -->
   <header>
     <span class="badge-status">Open to Work</span>
@@ -336,6 +438,9 @@
   <footer>
     <p>&copy; 2026 Marshal Adrariana. Dibuat menggunakan HTML5 & CSS3.</p>
   </footer>
+
+  <!-- Script JS diletakkan di paling bawah agar elemen HTML di atas sudah siap -->
+  <script src="app.js"></script>
 
 </body>
 </html>
