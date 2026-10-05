@@ -63,12 +63,67 @@
       margin-bottom: 20px; /* Jarak ke header di bawahnya */
     }
 
+    /* Container Utama */
+    .dropdown-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Tombol Utama (Bentuk Pill) */
+    .pill-drop-btn {
+      background-color: #333333;
+      color: white;
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      border: 1px solid #555555; /* Garis tepi tipis */
+      border-radius: 20px; /* Bentuk Pill */
+      cursor: pointer;
+    }
+
+    /* Kotak Dropdown di Bawahnya (IKUT MENGANUT DESAIN BULAT) */
+    .pill-drop-list {
+      display: none; /* Sembunyikan dulu */
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 5px;
+      background-color: #333333; /* Samakan warna latar atau ganti sesukamu */
+      min-width: 120px;
+      list-style: none;
+      padding: 5px 0;
+      border-radius: 12px; /* Sudut kotak drop-down ikut membulat! */
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+
+    /* Isi Tautan di Dalam List */
+    .pill-drop-list li a {
+      color: white;
+      padding: 6px 14px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.75rem;
+    }
+
+    /* EFEK HOVER: Mengganti kotak biru bawaan browser dengan abu-abu halus */
+    .pill-drop-list li a:hover {
+      background-color: #555555; 
+      border-radius: 8px; /* Sudut hover dalam ikut membulat */
+    }
+
+    /* Class bantuan untuk memunculkan list lewat JavaScript */
+    .pill-drop-list.show {
+      display: block;
+    }
+
+
     /* Tombol di dalam navbar (misal Toggle Dark Mode) */
     .nav-btn {
       background-color: #333333; /* Warna latar tombol (Abu-abu Gelap) */
       color: white; /* Warna teks (Putih) */
-      padding: 8px 16px; /* Jarak dalam tombol */
-      font-size: 0.85rem; /* Ukuran teks */
+      padding: 6px 14px; /* Jarak dalam tombol */
+      font-size: 0.75rem; /* Ukuran teks */
       border: 1px solid #555555; /* Garis tepi tipis */
       border-radius: 20px; /* Sudut bulat (Pill) */
       font-weight: bold; /* Teks tebal */
@@ -312,7 +367,19 @@
   
   <!-- NAVBAR: deretan tombol di atas bagian profil -->
   <nav class="navbar">
-    <button class="nav-btn" id="toggleMode">Dark Mode</button>
+  <div class="dropdown-wrapper">
+    <!-- Tombol Utama Bentuk Pill -->
+    <button id="customDropBtn" class="pill-drop-btn">Archive ▾</button>
+  
+    <!-- Kotak Dropdown Kustom (Bisa diatur sesuka hati di CSS) -->
+    <ul id="customDropList" class="pill-drop-list">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="projects.html">My Projects</a></li>
+    </ul>
+</div>
+
+    <button class="nav-btn" id="toggleMode"> Toggle Dark Mode</button>
   </nav>
 
   <!-- HEADER -->
@@ -322,8 +389,8 @@
     <div>
       <h1>Marshal Adrariana</h1>
       <h3>Web Developer & UI/UX Enthusiast</h3>
-      <p>Email: <a href="mailto:martialmar4@gmail.com">marshal@example.com</a> | HP: 0895-1563-9806 | Lokasi: Bandung</p>
-      <p>LinkedIn: <a href="#" target="_blank">linkedin.com/in/marshaladrariana</a> | GitHub: <a href="#" target="_blank">github.com/marshaladrariana</a></p>
+      <p>Email: <a href="mailto:martialmar4@gmail.com">martialmar4@gmail.com</a> | HP: 0895-1563-9806 | Lokasi: Bandung</p>
+      <p>LinkedIn: <a href="#" target="_blank">Don't have one yet</a> | GitHub: <a href="https://github.com/Shalzhere" target="_blank">github.com/Shalzhere</a></p>
     </div>
   </header>
 
@@ -372,34 +439,31 @@
         </thead>
         <tbody>
           <tr>
+            <td>2022 - 2025</td>
+            <td>ICT Club</td>
+            <td>SMPN 2 Bandung</td>
+            <td>90/100</td>
+          </tr>
+          <tr>
             <td>2025 - 2027</td>
             <td>SMK Jurusan RPL</td>
             <td>SMK Telkom Bandung</td>
             <td>100 /100</td>
           </tr>
-          <tr>
-            <td>2017 - 2020</td>
-            <td>SMA Jurusan IPA</td>
-            <td>SMA Negeri 1 Jakarta</td>
-            <td>88.5 / 100</td> 
-          </tr>
-          <tr>
-            <td>2014 - 2017</td>
-            <td>SMP</td>
-            <td>SMP Negeri 5 Jakarta</td>
-            <td>90 / 100</td>
         </tbody>
       </table>
     </section>
 
     <!-- SECTION: PENGALAMAN -->
     <section id="pengalaman">
-      <h2>Pengalaman Kerja & Organisasi</h2>
+      <h2>Pengalaman</h2>
       <ol>
         <li>
-          <strong>Frontend Developer Intern</strong> - PT Teknologi Nusantara (2023)
-          <p>Membantu mengembangkan antarmuka pengguna web menggunakan HTML, CSS, dan JavaScript.</p>
+          <strong>Membuat Situs Web</strong> - Memakai Framer (2026)
+          <p>Membuat situs web responsif untuk klien menggunakan Framer.</p>
+          <a href="https://abundant-cabbage-468148.framer.app/" target="_blank">Klik untuk melihat</a></p>
         </li>
+        
         <li>
           <strong>Anggota Divisi IT</strong> - Himpunan Mahasiswa Informatika (2021 - 2022)
           <p>Mengelola situs web resmi acara kampus dan mengoordinasikan workshop pemrograman.</p>
